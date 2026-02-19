@@ -17,13 +17,21 @@ class Solution:
                 result_array.append(nums2[right_pointer])
                 right_pointer += 1
 
-        # If there are leftovers in nums1 
+        # while left_pointer < size1:
+        #     result_array.append(nums1[left_pointer])
+        #     left_pointer += 1
+
+        # while right_pointer < size2:
+        #     result_array.append(nums2[right_pointer])
+        #     right_pointer += 1
+
+        # Leftovers managment
         if left_pointer < size1:
-            result_array += nums1[left_pointer:size1] # Extend the result array with the remaining elements in nums1
+            result_array += nums1[left_pointer:size1] 
         
         if right_pointer < size2:
-            result_array += nums2[right_pointer:size2] # Extend the result array with the remaining elements in nums2
-            
+            result_array += nums2[right_pointer:size2] 
+
         # Replace the elements in nums1 with the sorted result as a requirement to pass
         for index in range(size1 + size2):
             nums1[index] = result_array[index]
