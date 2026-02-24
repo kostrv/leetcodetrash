@@ -14,5 +14,5 @@ class Solution:
             if len(heap) > k:
                 heapq.heappop(heap)
         
-        # возвращаем только координаты без расстояний
+        # возвращаем только координаты
         return [[x, y] for _, x, y in heap]
