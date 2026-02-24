@@ -5,16 +5,15 @@ class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         # считаем частоту вхождений каждого элемента
         freq = {}
-        for num in nums:
-            freq[num] = freq.get(num, 0) + 1
+        for num in nums: freq[num] = freq.get(num, 0) + 1
 
         heap = []
         
         for num, count in freq.items():
-            # храним пары (частота, элемент) — куча сортирует по первому значению
+            # храним пары (частота, элемент), куча сортирует по первому значению
             heapq.heappush(heap, (count, num))
             
-            # выбрасываем наименее частый элемент — он точно не войдёт в top-k по частоте
+            # выбрасываем наименее частый элемент тк он точно не войдёт в top-k по частоте
             if len(heap) > k:
                 heapq.heappop(heap)
         
