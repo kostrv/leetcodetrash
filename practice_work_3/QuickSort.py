@@ -1,3 +1,5 @@
+import random   
+
 def partition_by_lomuto(array : list, low : int, high : int) -> int:
     pivot = array[high] # Выбираем опорный элемент (последний элемент массива)
     small_boundary = low - 1
@@ -20,10 +22,14 @@ def quick_sort(array : list, low : int = 0, high : int = None) -> None:
     high = high if high is not None else len(array) - 1
     
     if low < high:
-       pivot_pos = partition_by_lomuto(array=array, low=low, high=high)
-       quick_sort(array=array, low=low, high=pivot_pos - 1) # Рекурсивно сортируем левую часть
-       quick_sort(array=array, low=pivot_pos + 1, high=high) # Рекурсивно сортируем правую часть
-    
+        # Случайно выбираем pivot и ставим его в конец, чтобы защититься от худшего случая
+        random_pivot_index: int = random.randint(low, high)
+        array[random_pivot_index], array[high] = array[high], array[random_pivot_index]
+
+        pivot_pos = partition_by_lomuto(array=array, low=low, high=high)
+        quick_sort(array=array, low=low, high=pivot_pos - 1) # Рекурсивно сортируем левую часть
+        quick_sort(array=array, low=pivot_pos + 1, high=high) # Рекурсивно сортируем правую часть
+        
     return array
 
 
