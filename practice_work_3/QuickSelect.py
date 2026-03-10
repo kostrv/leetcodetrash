@@ -46,3 +46,4 @@ if __name__ == '__main__':
     for k in [0, 1, 5, 10, 20]:
         result = quick_select(array=test_array[:], k=k)  # копия, чтобы не менять оригинал
         print(f'k={k} -> {result}')
+        
