@@ -1,18 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        pairs = {')': '(', ']': '[', '}': '{'}
+        pairs = {')': '(', ']': '[', '}': '{'} # пары скобок для проверки
 
         for char in s:
-            if char in ['(', '[', '{']:
+            if char in ['(', '[', '{']: # если открывающая скобка, добавляем в стек
                 stack.append(char)
             else:
-                if len(stack) == 0:
+                if len(stack) == 0: # если стек пустой, а нам встретилась закрывающая скобка, значит это невалидная строка
                     return False 
 
-                if pairs[char] == stack[-1]:
+                if pairs[char] == stack[-1]: # если последняя открывающая скобка в стеке соответствует текущей закрывающей, удаляем её из стека
                     stack.pop()
                 else: 
                     return False
         
-        return len(stack) == 0
+        return len(stack) == 0 # если после обработки всей строки стек пустой, значит все скобки были корректно закрыты, иначе - нет.
