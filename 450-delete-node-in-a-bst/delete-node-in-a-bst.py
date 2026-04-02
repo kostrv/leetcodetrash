@@ -9,7 +9,7 @@ class Solution:
         if not root:
             return None
         
-        # Шаг 1: Ищем узел
+        # поиск ключа
         if key < root.val:
             root.left = self.deleteNode(root.left, key)
         elif key > root.val:
