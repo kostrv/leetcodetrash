@@ -18,7 +18,7 @@ class Solution:
                 elif pos == 'left':
                     self.last.left = new_node
                     
-                return new_node
+                return new_node # возвращаем самый последний ключ
             
             self.last = node # сохраняем ссылку на ключ
 
