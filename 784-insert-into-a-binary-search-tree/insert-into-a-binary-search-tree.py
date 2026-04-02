@@ -1,61 +1,35 @@
 
-# class Solution:
-#     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-#         self.last = None
-        
-#         def insert(node, pos=None):
-#             if node is None:
-#                 new_node = TreeNode(val, None, None)
-#                 if self.last is None:
-#                     # если это самый первый узел, возвращаем его
-#                     return new_node
-                    
-#                 if pos == 'right':
-#                     self.last.right = new_node
-#                 elif pos == 'left':
-#                     self.last.left = new_node
-#                 return new_node
-
-#             self.last = node
-#             if node.val < val:
-#                 return insert(node.right, pos='right')
-#             elif node.val > val:
-#                 return insert(node.left, pos='left')
-            
-#             return node 
-
-#         # если дерево пустое, insert вернет новый узел
-#         # если не пустое, нам нужно вернуть ИСХОДНЫЙ root
-#         res = insert(root)
-#         return root if root else res
-
 
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         self.last = None
 
         def insert(node, pos=None):
-            if node is None:
-                new_node = TreeNode(val)
+            if node is None: # дошли до конца
+
+                new_node = TreeNode(val) # финальный ключ под вставку
                 if self.last is None:
-                    # Если это самый первый узел, возвращаем его
+                    # если это самый первый ключ, сразу возвращаем его
                     return new_node
                 
-                # Привязываем к родителю
+                # привязываем к родителю в зависимости от pos
                 if pos == 'right':
                     self.last.right = new_node
                 elif pos == 'left':
                     self.last.left = new_node
+                    
                 return new_node
+            
+            self.last = node # сохраняем ссылку на ключ
 
-            self.last = node
-            if node.val < val:
-                insert(node.right, pos='right')
-            elif node.val > val:
+            # определяем сторону движения
+            if node.val < val: # если значение больше значения ключа, вправо
+                insert(node.right, pos='right') # отправляем значение ключа и ориентацию вставки
+
+            elif node.val > val: # если меньше, влево
                 insert(node.left, pos='left')
             
             return node # Возвращаем текущий узел дальше по цепочке
 
-        # Перезаписываем root результатом функции
-        root = insert(root)
-        return root
+        # перезаписываем root результатом функции
+        return insert(root)
