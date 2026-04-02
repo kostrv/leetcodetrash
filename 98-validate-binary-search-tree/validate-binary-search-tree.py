@@ -8,17 +8,20 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         nodes = []
 
-        def collect(node):
+        def collect(node): # для начала соберем бинарное дерево в массив
             if not node:
                 return 
-            collect(node.left)
+
+            # проходимся по дереву и собираем ключи
+            collect(node.left) 
             nodes.append(node.val)
             collect(node.right)
             
         collect(root)
 
+        # по свойству бинарного дерева, массив должен получиться отсортированный
         for i in range(1, len(nodes)):
-            if nodes[i] <= nodes[i-1]:
+            if nodes[i] <= nodes[i-1]: # предыдущий элемент должен быть меньше текущего, иначе структура неверная
                 return False
         return True
 
