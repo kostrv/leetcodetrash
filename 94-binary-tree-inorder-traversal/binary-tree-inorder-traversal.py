@@ -9,13 +9,12 @@ class Solution:
         result = []
 
         def inorder(node):
-            if not node:
+            if not node: # конечный узел
                 return 
 
-            inorder(node.left)
-            result.append(node.val)
-            inorder(node.right)
+            inorder(node.left) # проходимся по левым узлам
+            result.append(node.val) # добавляем значения
+            inorder(node.right) # проходимся по правым узлам
 
         inorder(root)
         return result
-        
