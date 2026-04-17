@@ -15,5 +15,5 @@ class Solution:
             current_and_previous = nums[i] + amounts[i-2]
             amounts[i] = max(previous, current_and_previous)
 
-        return amounts[count-1]
+        return amounts[-1]
         
