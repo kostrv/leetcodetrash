@@ -13,5 +13,3 @@ class Solution:
             self.prev[i] = self.prev[i-1] + self.prev[i-2]
 
         return self.prev[i]
-
-
