@@ -16,7 +16,7 @@
 
 select  
     s1.product_id,
-    s1.year as first_year,
+    t.first_year,
     s1.quantity,
     s1.price
 from Sales s1
